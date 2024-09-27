@@ -9,7 +9,7 @@
     "start": "node backend/index.js",
     "lint": "eslint ./backend",
     "lint:fix": "eslint ./backend --fix",
-    "test": "mocha",
+    "test": "mocha --exit",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
