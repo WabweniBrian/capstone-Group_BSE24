@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "nodemon backend/index.js",
     "start": "node backend/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint ./backend",
+    "lint:fix": "eslint ./backend --fix",
     "test": "mocha",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
@@ -26,12 +26,15 @@
   },
   "devDependencies": {
     "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.37.0",
     "mocha": "^10.7.3",
+    "mongodb-memory-server": "^10.0.1",
+    "sinon": "^19.0.2",
     "supertest": "^7.0.0"
   }
 }
