@@ -47,6 +47,7 @@ export default function Profile() {
         setImagePercent(Math.round(progress));
       },
       (error) => {
+        console.log(error);
         setImageError(true);
       },
       () => {
