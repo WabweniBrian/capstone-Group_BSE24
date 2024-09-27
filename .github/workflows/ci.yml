@@ -19,15 +19,15 @@ jobs:
           node-version: "14.x"
 
       - name: Install backend dependencies
-        working-directory: ./backend
+        working-directory: ./
         run: npm ci
 
       - name: Run backend linter
-        working-directory: ./backend
+        working-directory: ./
         run: npm run lint
 
       - name: Run backend tests
-        working-directory: ./backend
+        working-directory: ./
         run: npm test
 
   frontend:

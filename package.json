@@ -9,6 +9,7 @@
     "start": "node backend/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "mocha",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
@@ -24,9 +25,12 @@
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
+    "chai": "^5.1.1",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.30.0",
-    "eslint-plugin-node": "^11.1.0"
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0"
   }
 }
