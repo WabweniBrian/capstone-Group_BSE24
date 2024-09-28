@@ -12,21 +12,21 @@ chai.use(chaiHttp);
 let mongoServer;
 
 describe("Auth Controller Tests", function () {
-  this.timeout(5000); // Increased timeout for slower operations
+  // this.timeout(5000); // Increased timeout for slower operations
 
-  before(async () => {
-    mongoServer = await MongoMemoryServer.create();
-    await mongoose.connect(mongoServer.getUri());
-  });
+  // before(async () => {
+  //   mongoServer = await MongoMemoryServer.create();
+  //   await mongoose.connect(mongoServer.getUri());
+  // });
 
-  after(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
-  });
+  // after(async () => {
+  //   await mongoose.disconnect();
+  //   await mongoServer.stop();
+  // });
 
-  beforeEach(async () => {
-    await User.deleteMany({});
-  });
+  // beforeEach(async () => {
+  //   await User.deleteMany({});
+  // });
 
   describe("POST /api/auth/signup", () => {
     it("should create a new user on signup", async () => {
