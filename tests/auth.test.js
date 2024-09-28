@@ -9,16 +9,16 @@ const chai = use(chaiHttp);
 const app = express();
 
 describe("Auth Controller Tests", function () {
-  this.timeout(10000); // Increased timeout for slower operations
+  // this.timeout(10000); // Increased timeout for slower operations
 
-  before(async () => {
-    mongoose.connect("mongodb://localhost:27017/testdb");
-  });
+  // before(async () => {
+  //   mongoose.connect("mongodb://localhost:27017/testdb");
+  // });
 
-  after(async () => {
-    await User.deleteMany({});
-    await mongoose.disconnect();
-  });
+  // after(async () => {
+  //   await User.deleteMany({});
+  //   await mongoose.disconnect();
+  // });
 
   describe("POST /api/auth/signup", () => {
     it("should create a new user on signup", async () => {
