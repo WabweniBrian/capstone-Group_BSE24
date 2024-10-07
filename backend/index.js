@@ -20,23 +20,14 @@ const __dirname = path.resolve();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
-
 app.use(express.json());
-
 app.use(cookieParser());
 
+// API routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
-app.listen(5000, () => {
-  console.log("Server listening on port 5000");
-});
-
+// Error handling middleware
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
@@ -45,4 +36,16 @@ app.use((err, req, res, next) => {
     message,
     statusCode,
   });
+});
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+// Catch-all route for frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
+
+app.listen(5000, () => {
+  console.log("Server listening on port 5000");
 });
