@@ -10,8 +10,7 @@
     "lint": "eslint ./backend",
     "lint:fix": "eslint ./backend --fix",
     "test": "mocha --exit",
-    "build": "npm install",
-    "vercel-build": "npm install && cd frontend && npm install && npm run build"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
