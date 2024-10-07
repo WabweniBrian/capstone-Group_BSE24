@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -63,7 +63,7 @@ jobs:
     if: github.ref == 'refs/heads/staging'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Deploy to Vercel (Staging)
         uses: amondnet/vercel-action@v25
@@ -71,8 +71,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prod"
-          working-directory: ./
+          vercel-args: "--confirm"
 
   deploy-production:
     needs: [backend, frontend]
@@ -80,7 +79,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Deploy to Vercel (Production)
         uses: amondnet/vercel-action@v25
@@ -89,94 +88,3 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: "--prod"
-          working-directory: ./
-# name: Capstone Project CI/CD
-
-# on:
-#   push:
-#     branches: [staging, main]
-#   pull_request:
-#     branches: [staging, main]
-
-# jobs:
-#   backend:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: Use Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: "18.x"
-
-#       - name: Install backend dependencies
-#         working-directory: ./
-#         run: npm ci
-
-#       - name: Run backend linter
-#         working-directory: ./backend
-#         run: npm run lint
-
-#       - name: Run backend tests
-#         working-directory: ./
-#         run: npm test
-
-#   frontend:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: Use Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: "18.x"
-
-#       - name: Install frontend dependencies
-#         working-directory: ./frontend
-#         run: npm ci
-
-#       - name: Run frontend linter
-#         working-directory: ./frontend
-#         run: npm run lint
-
-#       - name: Build frontend
-#         working-directory: ./frontend
-#         run: npm run build
-
-#       - name: Run frontend tests
-#         working-directory: ./frontend
-#         run: npm test
-
-#   deploy-staging:
-#     needs: [backend, frontend]
-#     runs-on: ubuntu-latest
-#     if: github.ref == 'refs/heads/staging'
-
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: Deploy to Vercel (Staging)
-#         uses: amondnet/vercel-action@v25
-#         with:
-#           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-#           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-#           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-#           vercel-args: "--confirm"
-
-#   deploy-production:
-#     needs: [backend, frontend]
-#     runs-on: ubuntu-latest
-#     if: github.ref == 'refs/heads/main'
-
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: Deploy to Vercel (Production)
-#         uses: amondnet/vercel-action@v25
-#         with:
-#           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-#           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-#           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-#           vercel-args: "--prod"
