@@ -30,12 +30,12 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+
 app.listen(5000, () => {
   console.log("Server listening on port 5000");
 });
-
-app.use("/api/user", userRoutes);
-app.use("/api/auth", authRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
