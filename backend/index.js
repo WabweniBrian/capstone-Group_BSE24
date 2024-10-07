@@ -23,7 +23,6 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// API routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
