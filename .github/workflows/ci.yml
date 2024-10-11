@@ -98,3 +98,33 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: "--prod"
+
+
+# === Rollback Jobs ===
+  rollback-staging:
+    needs: deploy-staging
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+      - name: Rollback to last successful staging deployment
+        run: |
+          echo "Rolling back to the last successful staging build..."
+          vercel rollback ${{ secrets.VERCEL_PROJECT_ID }} --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Notify rollback
+        run: echo "Rollback to the last staging deployment completed."
+
+  rollback-production:
+    needs: deploy-production
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+      - name: Rollback to last successful production deployment
+        run: |
+          echo "Rolling back to the last successful production build..."
+          vercel rollback ${{ secrets.VERCEL_PROJECT_ID }} --prod --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Notify rollback
+        run: echo "Rollback to the last production deployment completed."
