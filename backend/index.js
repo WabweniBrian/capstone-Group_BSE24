@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import morgan from "morgan";
+import morgan from "morgan"; // Import Morgan using ES module syntax
 import logger from "./utils/logger.js"; // Import Winston logger (make sure logger.js uses ES module syntax)
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
@@ -101,5 +101,5 @@ app.get("*", (req, res) => {
 
 // Start the server
 app.listen(5000, () => {
-  logger.info("Server listening on port 5000");
+  logger.info("Server listening on port 5000");  // Log server start using Winston
 });
