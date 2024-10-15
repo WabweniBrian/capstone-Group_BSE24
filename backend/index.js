@@ -7,6 +7,7 @@ import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { collectDefaultMetrics, register, Counter, Histogram } from "prom-client";
 dotenv.config();
 
 console.log("MONGODB_URI:", process.env.MONGODB_URI);
