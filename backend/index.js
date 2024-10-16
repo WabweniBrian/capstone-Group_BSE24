@@ -18,7 +18,7 @@ mongoose
     console.log(err);
   });
 
-  
+
 
 const __dirname = path.resolve();
 
@@ -26,6 +26,7 @@ const app = express();
 
 // Start collecting default metrics (Node.js process metrics)
 collectDefaultMetrics();
+
 
 // Custom Prometheus Metrics
 const httpRequestCounter = new Counter({
