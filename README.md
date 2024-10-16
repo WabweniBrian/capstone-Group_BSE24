@@ -2,6 +2,7 @@
 
 This is a full-stack MERN authentication project. It uses MongoDB, Express, React, and Node.js. It also uses Redux for state management and Tailwind CSS for styling.
 
+
 ## Features
 
 - User registration
